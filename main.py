@@ -1,5 +1,7 @@
-#### Imports et définition des variables globales
-import random
+"""
+docstring
+"""
+import csv
 
 FILENAME = "listes.csv"
 
@@ -14,39 +16,62 @@ def read_data(filename):
     Returns:
         list: le contenu du fichier (1 list par ligne)
     """
-    l = []
+    with open(filename,  mode='r', encoding='utf8') as f:
+        reader = csv.reader(f,  delimiter=';')
+        l = []
+        for e in reader:
+            ligne=[]
+            for i in e:
+                ligne.append(int(i))
+            l.append(ligne)
     return l
 
 def get_list_k(data, k):
-    l = []
-    return l
+    """
+    data 
+    """
+    return data[k]
 
 def get_first(l):
-    return None
+    """
+    premier element 
+    """
+    return l[0]
 
 def get_last(l):
-    return None
+    """
+    dernier 
+    """
+    return l[-1]
 
 def get_max(l):
-    return None
+    """
+    max 
+    """
+    return max(l)
 
 def get_min(l):
-    return None
+    """
+    min 
+    """
+    return min(l)
 
 def get_sum(l):
-    return None
-
-
-#### Fonction principale
+    """
+    somme 
+    """
+    return sum(l)
 
 
 def main():
-    pass
-    # data = read_data(FILENAME)
-    # for i, l in enumerate(data):
-    #     print(i, l)
-    # k = 37
-    # print(k, get_list_k(data, 37))
+    """
+    fonction principale 
+    """
+    data = read_data(FILENAME)
+    for i, l in enumerate(data):
+        print(i, l)
+    k = 37
+    print(k, get_list_k(data, 37))
 
 
 if __name__ == "__main__":
